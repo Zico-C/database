@@ -1,0 +1,841 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.body{
+    background-color: #f6f1eb;
+    color: rgb(68,68,68);
+    font-family: "Helvetica W01", "Microsoft YaHei","PingFang SC","Noto Sans", sans-serif;
+    font-weight: 200;
+    line-height: 156%;
+    overflow-x: hidden;
+    margin: 0px;
+    position: relative;
+    margin-top: 15px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+}
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+ul.drop-down-menu{
+    border-left: 2px solid rgba(204, 204,204, 0.4);
+    border-right: 2px solid rgba(204, 204,204, 0.4);
+    border-bottom: 2px solid rgba(204, 204,204, 0.4);
+    display: inline-block;
+    font-family: 'open Sans',Arial,sans-serif;
+    font-size: 18px;
+    margin-top: 1.2%;;
+}
+ul.drop-down-menu li{
+    position: relative;
+    white-space: nowrap;
+    border-left: 2px solid rgba(204, 204,204, 0.4);
+    border-right: 2px solid rgba(204, 204,204, 0.4);
+    border-bottom: 2px solid rgba(204, 204,204, 0.4);
+}
+ul.drop-down-menu > li:last-child{
+    border-right: none; 
+}
+ul.drop-down-menu > li{
+    float:left; /*只有第一層是靠左對齊*/ 
+}
+ul.drop-down-menu a {
+    background-color: #fff;
+    color: #333;
+    display: block;
+    padding: 0 30px;
+    text-decoration: none;
+    line-height: 40px;
+}
+ul.drop-down-menu a:hover{ /* 滑鼠滑入按鈕變色*/
+    background-color: #ef5c28;
+    color: #fff;
+}
+ul.drop-down-menu li:hover > a{ /* 滑鼠移入次選單上層按鈕保持變色*/
+    background-color: #ef5c28;
+    color: #fff;
+}
+ul.drop-down-menu ul{
+    border: 2px solid rgba(204, 204,204, 0.4);
+    position: absolute;
+    z-index: 99;
+    left: -1px;
+    top: 100%;
+    min-width: 180px;
+}
+ul.drop-down-menu ul li{
+    border: 2px solid rgba(204, 204,204, 0.4);
+}
+ul.drop-down-menu ul li:last-child{
+    border-bottom: none;
+}
+ul.drop-down-menu ul ul{
+    z-index: 999;
+    top: 10px;
+   left: 90%;
+}
+ul.drop-down-menu ul { /*隱藏次選單*/
+    left: 99999px;
+    opacity: 0;
+    -webkit-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+}
+
+ul.drop-down-menu li:hover > ul { /* 滑鼠滑入展開次選單*/
+    opacity: 1;
+    -webkit-transition: opacity 0.8s;
+    transition: opacity 0.8s;
+    left: -120px;
+    border-right: 5px;
+}
+
+ul.drop-down-menu li:hover > ul ul { /* 滑鼠滑入之後、次選單之後的選單依舊隱藏*/
+    left: 99999px;
+}
+
+ul.drop-down-menu ul li:hover > ul { /* 第二層之後的選單展開位置*/
+    left: 90%;
+}
+.ml5 {
+position: relative;
+font-weight: 600;
+font-size: 2.8em;
+color: #402d2d;
+line-height:130%;
+text-align: center;
+justify-self:center;
+font-family: "Gill Sans";
+margin-bottom: 15px;
+letter-spacing: 0.2em;
+}
+  
+.ml5 .text-wrapper {
+    position: relative;
+    display: inline-block;
+    padding-top: 0.1em;
+    padding-right: 0.05em;
+    padding-bottom: 0.15em;
+    line-height: 1em;
+}
+  
+.ml5 .line {
+position: absolute;
+left: 0;
+top: 0;
+bottom: 0;
+margin: auto;
+height: 3px;
+width: 100%;
+background-color: #402d2d;
+transform-origin: 0.5 0;
+}
+
+.ml5 .ampersand {
+font-family: Baskerville, serif;
+font-style: italic;
+font-weight: 400;
+width: 1em;
+margin-right: -0.1em;
+margin-left: -0.1em;
+}
+
+.ml5 .letters {
+display: inline-block;
+opacity: 0;
+}
+
+.logo > a {
+    text-decoration: none;
+    color: #333;
+}
+.logo:hover,.logo:visited,a:link,a:active{
+    text-decoration: none;
+    color: #333;
+}
+.header{
+    line-height:15%;
+    text-align: center;
+    text-decoration: none;
+}
+.menu{
+    text-align: center;
+    margin:auto;
+    margin-bottom: 2.2%;
+
+}
+.img{
+    display: block;
+    height: auto;
+    width: 100%;
+}
+.menu .icon{
+    margin-right: 4%;
+}
+.icon > a > img{
+    margin: 0;
+    height: 3rem;
+    width: 3rem;
+    float: right;
+    margin-right: 1.5%;
+}
+@media (min-width: 600px) and (max-width: 1200px) {
+    .icon > a > img {
+     font-size: calc(2.2rem + (1.3-1.2) * ((100vw - 600px) / (1200 - 600)));
+    }
+  }
+  @media (min-width: 1200px) {
+    .icon > a > img {
+        font-size: 2.6rem;
+    }
+  }
+.icon{
+    margin-right: 2%;
+}
+.header{
+    position:sticky;
+    top:0;
+    background-color: #f6f1eb;
+}
+
+.main > article{
+    background-color: gray;
+    border: 5px #f6f1eb solid;
+    display: flex;
+}
+Footer{
+    background-color: #ccc;
+}
+.main > article > h2{
+    font-size: 1.2rem;
+    margin: 3%;
+    font-family:sans-serif;
+    letter-spacing: 0.3em;
+    font-style:italic;
+    color: #f6f1eb; text-shadow:cadetblue 0.1em 0.1em 0.2em;
+    margin-bottom: 3%;
+}
+@media (min-width: 600px) and (max-width: 1200px) {
+    .main > article > h2 {
+     font-size: calc(2.2rem + (1.3-1.2) * ((100vw - 600px) / (1200 - 600)));
+     margin: 3%;
+     font-family:sans-serif;
+     letter-spacing: 0.3em;
+     font-style:italic;
+     color: #f6f1eb; text-shadow:cadetblue 0.1em 0.1em 0.2em;
+     margin-bottom: 3%;
+    }
+  }
+  @media (min-width: 1200px) {
+    .main > article > h2 {
+        font-size: 2.6rem;
+        margin: 3%;
+        font-family:sans-serif;
+        letter-spacing: 0.3em;
+        font-style:italic;
+        color: #f6f1eb; text-shadow:cadetblue 0.1em 0.1em 0.2em;
+        margin-bottom: 3%;
+    }
+  }
+@-webkit-keyframes shining {
+    from {
+        text-shadow: 0 0 10px lightblue, 0 0 20px lightblue, 0 0 30px lightblue, 0 0 40px skyblue, 0 0 50px skyblue, 0 0 60px skyblue;
+    }
+    to {
+        text-shadow: 0 0 5px lightblue, 0 0 10px lightblue, 0 0 15px lightblue, 0 0 20px skyblue, 0 0 25px skyblue, 0 0 30px skyblue;
+    }
+}
+
+.menu{
+    background-color: #f6f1eb;
+    margin: 0 auto;
+    height: auto;
+    width: auto;
+    margin-bottom: 2.2%;
+}
+
+
+/* article > img{
+    margin-bottom: 2.5%;
+} */
+
+/*.main article img{
+    width: 45%;
+    margin: auto;
+    height: 70%;
+    margin-bottom: 2.5%;
+}*/
+
+.drop-down-menu{
+    margin:0 auto;
+    margin-left: 8%;
+}
+footer{
+    padding:1px;
+    display: block;
+    margin: 80%;
+    height: auto;
+    width: auto;
+    background-color: gray;
+}
+footer {
+    font-size: 120%;
+    line-height: 135%;
+    font-family: sans-serif;
+    color: #f6f1eb;
+}
+
+footer h4 {
+    font-size: 160%;
+    margin: 2%;
+    color: #f6f1eb;
+    font-weight: 900;
+}
+
+footer p {
+    font-family: Arial;
+    letter-spacing: 0.2rem;
+    line-height: 130%;
+    font-size: 110%;
+    word-spacing:0.2rem;
+    text-align: center;
+}
+.col-md-4{
+    margin: 2.4%;
+}
+.icons{
+    width:auto;
+}
+.icons a{
+    text-decoration: none;
+    color: #f6f1eb;
+
+}
+.icons ion-icon{
+    color: #f6f1eb;
+    font-size: 200%;
+    margin: 0.5%;
+    transition: 0.3s ease;
+}
+.icons ion-icon:hover{
+    color: cyan;
+}
+.contact-info{
+    font-family: Arial;
+    letter-spacing: 0.2rem;
+    line-height: 2rem;
+    font-size: 110%;
+    word-spacing:0.2rem;
+    text-align: center;
+}
+/*登入視窗*/
+.section{
+    margin: 0 auto;
+    height: auto;
+    width: auto;
+    line-height: 150%;
+}
+.wrapper{
+    position: absolute;
+    top: 10.4rem;
+    right: 0;
+    width: 25%;
+    height: 100vh;
+    background: transparent;
+    backdrop-filter: blur(15px);
+    box-shadow: -1px 0 10px rgba(0, 0, 0, .2);
+    border-left: 2px solid rgba(255, 255, 255, .1);
+    z-index: 100;
+    padding: 0 30px;
+    padding-top: 30px;
+    opacity: 0;
+}
+
+.wrapper.active-popo{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.icon-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background: grey;
+    backdrop-filter: blur(25px);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 10px;
+}
+
+.icon-close i{
+    font-size: 32px;
+    color: #fff;
+}
+
+.wrapper .logreg-box{
+    width: 100%;
+}
+
+.wrapper .form-box.login{
+    display: block;
+}
+
+.wrapper.active .form-box.login{
+    display: none;
+}
+
+.wrapper .form-box.register{
+    display: none;
+}
+
+.wrapper.active .form-box.register{
+    display: block;
+}
+
+.form-box.login .loreg-title{
+    text-align:center;
+    margin-bottom: 40px;
+    color: #fff;
+}
+.loreg-title h2{
+    font-size: 32px;
+    margin: 8px;
+    color: #fff;
+}
+.loreg-title p{
+    font-size: 15px;
+    font-weight: 500;
+    color: #fff;
+}
+.logreg-box .input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+    border-bottom: 2px solid #fff;
+}
+.input-box input{
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 500;
+  padding-right: 25px;
+}
+.input-box label{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size:16px ;
+    font-weight: 500;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label{
+    top: -7px;
+}
+
+
+.input-box .icon{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: 22px;
+    color: gray;
+}
+.logreg-box .remember-forgot{
+    font-size: 14.5px;
+    color: #fff;
+    font-weight: 500;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember-forgot label input{
+    accent-color: #fff;
+    margin-right: 3px;
+}
+
+.remember-forgot a{
+    color: gray;
+    text-decoration: none;
+}
+.remember-forgot a:hover{
+    text-decoration: underline;
+}
+
+.logreg-box .btn{
+    justify-content: center;  
+    margin: 0.5rem 1rem 1rem;
+    width: 85%;
+    height: 50px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    cursor: pointer;
+    font-size: 16px;
+    color: #222;
+    font-weight: 600;
+    transition: all 1.5s -.2s;
+}
+.form-box.login  button:hover{
+    color: #f6f1eb;
+    background-color: #ef5c28;
+    transition: all 1s -.2s;
+    border: 2px #f6f1eb solid;
+}
+.form-box.register  .btn:hover{
+    color: #f6f1eb;
+    background-color: #ef5c28;
+    transition: all 1s -.2s;
+    border: 2px #f6f1eb solid;
+}
+
+.logreg-box .registerLink{
+    justify-content: center;  
+    margin: 0.5rem 1rem 1rem;
+    width: 85%;
+    height: 50px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    cursor: pointer;
+    font-size: 16px;
+    color: #222;
+    font-weight: 600;
+    transition: all 1.5s -.2s;
+}
+
+.media-options{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0.1rem 1rem 0.5rem;
+}
+
+.media-options a {
+    display:inline-flex;
+    justify-content: center;
+    text-align:center;
+    width: 92%;
+    height: 35px;
+    background:transparent;
+    border: 2px solid #fff;
+    margin: 1rem 0 0.4rem 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    border-radius: 40px;
+    color: #fff;
+    text-decoration: none;
+    transition: .5s;
+}
+
+.media-options a:hover{
+    background: rgba(255, 255,255, .1);
+}
+
+.media-options a i {
+    font-size: 20px;
+    margin-top: 1%;
+}
+
+.media-options a span{
+    font-size: 16px;
+    font-weight: 500;
+}
+.logreg-box .logerg-link{
+    font-size: 17px;
+    color: #fff;
+    text-align: center;
+    font-weight: 500;
+    margin:2%;
+    letter-spacing: 0.1rem;
+}
+.logerg-link p a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+}
+.logerg-link p a:hover{
+    text-decoration: underline;
+}
+
+.col-md-4 a{
+    color:#f6f1eb;
+
+}
+.col-md-4 a:link,a:visited,a:hover,a:active{
+    color:#f6f1eb;
+}
+.header .index a:link,a:visited,a:hover,a:active{
+    color: #333;
+}
+
+.card-list{
+    margin:0 auto;
+    width: 40%;
+    height: 100%;
+    margin:5% 3% 5% 8%;
+}
+.card-list .goods {
+    width: 100%;
+    margin: 0 auto;
+    
+}
+.card-text{
+
+    width: 40%;
+    margin:5% 5% 5% 0%;
+}
+.card-text1{
+    margin: 1%;
+}
+.card-text1 h1{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f6f1eb;
+    font-size: 2.1rem;
+    line-height:180%;
+    text-align: left;
+}
+.card-text1 h6{
+    font-family:sans-serif;
+    color: #f6f1eb;
+    font-size: 1.3rem;
+    line-height:120%;
+    float: left;
+}
+.card-text1 span{
+    font-family:Arial, Helvetica, sans-serif;
+    color: #f6f1eb;
+    font-size: 1rem;
+    line-height:120%;
+    float: left;
+    margin-top: 7%;
+    margin-bottom: 2%;
+}
+.card-text1 input{
+    height: 35px;
+    width: 100%;
+    font-size: 1.2rem;
+    font-family:Arial, Helvetica, sans-serif;
+
+}
+.card-text1 input:focus{
+    border: 2px orange solid;
+}
+.card-text1 input:hover{
+    border: 2px orange solid;
+}
+.buybutton{
+    margin:8% 1% 1% 1%;
+    padding: 4% 2%;
+    background-color: #fff;
+    color: #333;;
+    border: none;
+    border-radius: 7px;
+    width: 40%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 900;
+    float: left;
+    border:#ef5c28 2px solid;
+    transition: all 2s -.2s;
+}
+.buybutton:hover{
+    border:#f6f1eb 2px solid;
+    background-color: #ef5c28;
+    color: #f6f1eb;
+    width: 50%;
+    transition: all 2s -.2s;
+}
+
+.list{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    column-gap: 20px;
+    row-gap: 20px;
+    margin-top: 50px;
+}
+.card{
+    position: fixed;
+    top: 0;
+    right: 100%;
+    width: 500px;
+    backdrop-filter: blur(15px);
+    box-shadow: -1px 0 10px rgba(0, 0, 0, .2);
+    border-left: 2px solid rgba(255, 255, 255, .1);
+    height: 100vh;
+    transition: 0.5s;
+    padding-top: 15px;
+}
+.card h1{
+    color:#333;
+    font-weight:500;
+    font-size: 2.1rem;
+    margin: 0;
+    padding: 0 20px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card .checkout{
+    position:absolute;
+    bottom: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.card .checkout div{
+    background-color: #ef5c28;
+    width: 100%;
+    height: 70px;
+    font-size: 22px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+    color:#f6f1eb;
+}
+.card .checkout div:nth-child(2){
+    background-color:rgba(0, 0, 0, .35);
+    color:#f6f1eb;
+    
+}
+.active .card{
+    right:calc(100% - 500px) ;
+}
+.listCard  img{
+    width: 150px;
+    height: auto;
+    right:100%;
+    margin:30px;
+}
+.listCard li img{
+    width: 150px;
+    height: auto;
+    right:100%;
+    margin:30px;
+}
+
+.listCard span{
+    display:flex;
+    font-family:'Times New Roman';
+    font-size: 18px;
+    justify-self: center;
+    align-items: center;
+    color:#333;
+}
+.listCard button{
+    margin:1%;
+    padding:1%;
+    background-color: #fff;
+    color: #333;;
+    border: none;
+    border-radius: 7px;
+    width: 10%;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+.listCard button:hover{
+    color: #f6f1eb;
+    background-color: #ef5c28;
+    transition: all 1s -.3s;
+}
+
+
+.cart-list-container {
+    height: 81%; /* 设置容器的固定高度 */
+    overflow: auto; /* 添加滚动条 */
+  }
+  
+.gotobuy{
+    cursor: pointer;
+    transform: all 0.5s;
+    text-align: center;
+}
+.gotobuy span{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.gotobuy span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+.gotobuy:hover span {
+padding-right: 25px;
+}
+
+.gotobuy:hover span:after {
+opacity: 1;
+right: 0;
+
+}
+.closeshopping{
+    cursor: pointer;
+    transform: all 0.5s;
+    text-align: center;
+}
+.closeshopping span{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.closeshopping span:after {
+    content: '\2716';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+.closeshopping:hover span {
+padding-right: 25px;
+}
+
+.closeshopping:hover span:after {
+opacity: 1;
+right: 0;
+}
+.gobuy{
+    display: none;
+}
+.menberX{
+  margin-top: 7%;
+  margin-bottom: 7%;
+  font-weight: 500;
+  text-align: left;
+}
