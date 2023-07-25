@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="M15.css" href="">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    
+    <style>
+    
+        body{
+    	font-family: "Helvetica W01", "Microsoft YaHei","PingFang SC","Noto Sans", sans-serif;
+    	}
+        .dropdown-menu {
+            display: none;
+        }
+        
+        .nav-link-men:hover + .dropdown-menu,
+        .nav-link-women:hover + .dropdown-menu {
+            display: block;
+        }
+        
+        .cart-image,.user-image {
+            width: 22px;
+            height: 22px;
+        }
+
+        .productInfo-divider {
+            height: 1px;
+            background-color: gray;
+            margin-bottom: 10px;
+          }
+
+        .body{
+            background-color: #f6f1eb;
+        }
+
+        .bg-grayColor {
+            background-color:gray;
+        }
+        .listCard  img{
+        width: 150px;
+        height: auto;
+        right:100%;
+        margin-bottom: 10px;
+        }
+        .listCard  li{
+        list-style: none;
+
+        }        
+        .listCard{
+            padding: 0px;
+            margin:0px auto;
+
+        }
+        .productInfo > img  {
+            margin-right: 6%;
+        }
+
+        .productInfo > span  {
+            margin-right: 9%;
+            
+        }
+
+        .cart-list-container{
+            height:100%; /* 设置容器的固定高度 */
+            overflow: auto; /* 添加滚动条 */
+        }
+
+        .container h4 {
+            color: #f6f1eb;
+            font-weight: 900;
+            font-size: 160%;
+            font-family: Arial;
+            text-align: center;
+            line-height: 150%;
+        }
+        .container p {
+            color: #f6f1eb;
+            font-weight: 600;
+            font-family: Arial;
+            font-size: 160%;
+            word-spacing: 0.2rem;
+            font-size: 110%;
+            line-height: 130%;
+            letter-spacing: 0.2rem;
+            text-align: center;
+        }
+
+        .contact-info li {
+            color: #f6f1eb;
+            font-weight: 600;
+            font-family: Arial;
+            font-size: 160%;
+            word-spacing: 0.2rem;
+            font-size: 110%;
+            line-height: 150%;
+            letter-spacing: 0.2rem;
+            text-align: center;
+            list-style: none;
+        }
+        .contact-info a {
+            text-decoration: none;
+            color: #f6f1eb;
+            font-weight: 600;
+            font-family: Arial;
+            font-size: 160%;
+            word-spacing: 0.2rem;
+            font-size: 110%;
+            line-height: 150%;
+            letter-spacing: 0.2rem;
+            text-align: center;
+            list-style: none;
+        }
+        .contact-info a:hover {
+            text-decoration: none;
+            color:aqua;
+        }
+        .icons a{
+            text-decoration: none;
+            color: #f6f1eb;
+            font-size: 2rem;
+        }
+        .icons {
+            text-align: center;
+        }
+        .icons a:hover{
+            text-decoration: none;
+            color:aqua;
+        }
+        #login-icon{
+            margin: 0;
+            float: right;
+        }
+        #login-icon img{
+            width: 3rem;
+            height: 3rem;
+        }
+        /*登入視窗*/
+        .wrapper{
+        position: absolute;
+        top: 10.2rem;
+        right: 0;
+        width: 25%;
+        height: 100vh;
+        background: transparent;
+        backdrop-filter: blur(15px);
+        box-shadow: -1px 0 10px rgba(0, 0, 0, .2);
+        border-left: 2px solid rgba(255, 255, 255, .1);
+        z-index: 100;
+        padding: 0 30px;
+        padding-top: 30px;
+        opacity: 0; /*使其完全透明*/
+        }
+
+        .wrapper.active-popo{
+        opacity: 1;
+        pointer-events: auto;
+        }
+
+        .icon-close{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 45px;
+        height: 45px;
+        background: grey;
+        backdrop-filter: blur(25px);
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom-left-radius: 10px;
+        }
+
+        .icon-close i{
+        font-size: 32px;
+        color: #fff;
+        }
+
+        .wrapper .logreg-box{
+        width: 100%;
+        }
+
+        .wrapper .form-box.login{
+        display: block;
+        }
+
+        .wrapper.active .form-box.login{
+        display: none;
+        }
+
+        .wrapper .form-box.register{
+        display: none;
+        }
+
+        .wrapper.active .form-box.register{
+        display: block;
+        }
+
+        .form-box.login .loreg-title{
+        text-align:center;
+        margin-bottom: 40px;
+        color: #444444;
+        }
+        .loreg-title h2{
+        font-size: 32px;
+        font-weight: bold;
+        margin: 8px;
+        color: #444444;
+        text-align: center;
+        }
+        .loreg-title p{
+        font-size: 15px;
+        font-weight: bold;
+        color: #444444;
+        text-align: center;
+        }
+        .logreg-box .input-box{
+        position: relative;
+        width: 100%;
+        height: 50px;
+        margin: 30px 0;
+        border-bottom: 2px solid #fff;
+        }
+        .input-box input{
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        color: #444;
+        font-weight: 500;
+        padding-right: 25px;
+        }
+        .input-box label{
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        font-size:16px ;
+        font-weight: 500;
+        color: #444444;
+        pointer-events: none;
+        transition: .5s;
+        }
+
+        .input-box input:focus~label,
+        .input-box input:valid~label{
+        top: -7px;
+        }
+
+
+        .input-box .icon{
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        font-size: 22px;
+        color: gray;
+        }
+        .logreg-box .remember-forgot{
+        font-size: 14.5px;
+        color: #333;
+        font-weight: 500;
+        margin: -15px 0 15px;
+        display: flex;
+        justify-content: space-between;
+        }
+
+        .remember-forgot label input{
+        accent-color: #444444;
+        margin-right: 3px;
+        }
+
+        .remember-forgot a{
+        color: gray;
+        text-decoration: none;
+        }
+        .remember-forgot a:hover{
+        text-decoration: underline;
+        }
+
+        .logreg-box .btn{
+        justify-content: center;  
+        margin: 0.5rem 1rem 1rem;
+        width: 85%;
+        height: 35px;
+        background-color: #fff;
+        border: none;
+        outline: none;
+        border-radius: 40px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+        cursor: pointer;
+        font-size: 16px;
+        color: #222;
+        font-weight: 600;
+        transition: all 1.5s -.2s;
+        }
+        .form-box.login  button:hover{
+            color: #f6f1eb;
+            background-color: #ef5c28;
+            transition: all 1s -.2s;
+            border: 2px #f6f1eb solid;
+        }
+        .form-box.register  .btn:hover{
+            color: #f6f1eb;
+            background-color: #ef5c28;
+            transition: all 1s -.2s;
+            border: 2px #f6f1eb solid;
+        }
+        
+        .logreg-box .registerLink{
+        justify-content: center;  
+        margin: 0.5rem 1rem 1rem;
+        width: 85%;
+        height: 35px;
+        background-color: #fff;
+        border: none;
+        outline: none;
+        border-radius: 40px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+        cursor: pointer;
+        font-size: 16px;
+        color: #444444;
+        font-weight: 600;
+        transition: all 1.5s -.2s;
+        }
+        .media-options{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 0.1rem 1rem 0.5rem;
+        }
+
+        .media-options a {
+        display:inline-flex;
+        justify-content: center;
+        text-align:center;
+        width: 92%;
+        height: 35px;
+        background:transparent;
+        border: 2px solid #fff;
+        margin: 1rem 0 0.4rem 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+        border-radius: 40px;
+        color: #444444;
+        text-decoration: none;
+        transition: .5s;
+        }
+
+        .media-options a:hover{
+        background: rgba(255, 255,255, .1);
+        }
+
+        .media-options a i {
+        font-size: 20px;
+        margin-top: 1%;
+        }
+
+        .media-options a span{
+        font-size: 16px;
+        font-weight: 500;
+        }
+        .logreg-box .logerg-link{
+        font-size: 17px;
+        color: #333;
+        text-align: center;
+        font-weight: 500;
+        margin:2%;
+        letter-spacing: 0.1rem;
+        }
+        .logerg-link p a{
+        color: #444444;
+        text-decoration: none;
+        font-weight: 600;
+        letter-spacing: 0.1rem;
+        }
+        .logerg-link p a:hover{
+        text-decoration: underline;
+        }
+        .form-box.login  button:hover{
+            color: #f6f1eb;
+            background-color: #ef5c28;
+            transition: all 1s - .3s;
+            border: 1px #f6f1eb solid;
+        }
+
+        /*會員CSS語法結束*/
+    </style>
+    <title></title>
+  
+</head>
+<body class="body">
+
+    <!--topLogo-->
+    <div class="container"><!--定寬容器-->
+    <div class="row justify-content-center mb-2"><!--設定置中-->
+        <h1 class="ml5">
+            <div class="text-wrapper d-flex justify-content-center"><!--動畫置中-->
+                <span class="text-wrapper ">
+                    <a href="index.html" class="index" style="text-decoration:none;">
+                    <span class="line line1"></span>
+                    <span class="letters letters-left">Chia.Q</span>
+                    <span class="letters ampersand">&amp;</span>
+                    <span class="letters letters-right">select</span>
+                    <span class="line line2"></span>
+                    </a>
+                </span>
+            </div><!--動畫置中over-->
+        </h1>
+        <script src="m15.js"></script>
+    </div> <!--設定置中 over-->
+    </div><!--定寬容器over-->
+    <!--topLogo over-->
+
+    
+
+    <!--list-->
+    <div class="container"><!--定寬容器-->
+    <div class="row justify-content-center mb-2"><!--設定置中-->
+
+        <!--login shoppint-cartLogo-->
+        <div class="col-9 mt-3 d-flex justify-content-end align-items-center" style="display: block;">
+            <div class="shopping" style="padding-right: 40px;">
+                <a href="#" id="shoppingButton" class="shopping"><img src="img/shopping-cart.png" title="購物車" class="img-fluid cart-image" style="display: none;"></a>
+            </div>
+            <div class="icon-login" id="login-icon">
+                <a href="#" class="Login-popo"><img src="img/user.png" href="#" title="會員資料" class="img-fluid user-image"></a>
+            </div>
+        </div>
+        <!--login shoppint-cartLogo over-->
+        
+    </div> <!--設定置中 over-->
+    </div><!--定寬容器over-->
+    <!--list over-->
+
+    <!--body-->
+    <div class="container"><!--定寬容器-->
+    <div class="row mb-4 justify-content-center"><!--設定置中-->
+        <div class="row col-10 bg-grayColor">
+            <div class="contanier mt-4 mb-4 ">
+                <div class="row">
+                    <!--購物車 div-->
+                    <div class="row justify-content-center mb-4">
+                        <div class="col-sm-10">
+                            <div class="card h-100">
+                                <!--header-->
+                                <div class="card-header mt-1">
+                                    <h5 class="card-title">購物車</h5>
+                                </div>
+        
+                                <!--計算幾件-->
+                                <div>
+                                    
+                                </div>
+        
+                                <!--header over-->
+            
+                                <!--body-->
+                                <div class="card-body">
+
+                                        <!--購買數量資料-->
+                                        <div style="width: 150px;margin-right: 6%;display: block;float: left;"><span>商品資料</span></div>
+                                        <div style="display:block">
+                                            <span style="margin-right: 11.2%;margin-left: 0.3%;">數量</span>
+                                            <span style="margin-right: 13.5%;">單件價格</span>
+                                            <span style="margin-right: 14.3%;">小計</span>
+                                            <span>+/-</span>
+                                        </div>
+                                        <!--購買數量資料over-->
+                                    <hr class="productInfo-divider">
+
+                                    <div>
+                                        <!--待導入商品資料-->
+                                        <div style="display: none;">
+                                            <div class="addCard">
+                                                <button type="button" class="buybutton" data-id="0">加入購物車</button>
+                                            </div>
+                                            <div class="gobuy">
+                                                <button type="button"  class="buybutton">直接購買</button>
+                                            </div>
+                                        </div>
+                                        <!--購物車-->
+                                        <div>
+                                            <div class="card" style="height:67vh">
+                                                <div class="cart-list-container">
+                                                    <ul class="listCard"></ul>
+                                                </div>
+                                                <div class="checkout" style="display: none;">
+                                                    <div class="gotobuy"><span>直接購買</span></div>
+                                                    <div class="closeshopping"><span>close</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <script src="app2_new.js"></script>
+                                    </div>
+                                    
+                                        
+
+                                    <!--待導入商品資料over-->
+                                </div>
+
+                                <!--body over-->
+                            </div>
+                        </div>
+                    </div>
+                    <!--上方 div over-->
+
+                    <!--下方div-->
+                    <form id="myForm" method="post" action="CheckServlet">
+                        <div class="row justify-content-center">
+                            <!--選擇送貨及付款方式-->
+                            <div class="col-sm-7">
+                                <div class="card h-100">
+                                    <!--header-->
+                                    <div class="card-header mt-1">
+                                        <h5 class="card-title">選擇送貨及付款方式</h5>
+                                    </div>
+                                    <!--header over-->
+
+                                    <!--body-->
+                                    <!-- 取貨 -->
+                                    <div class="card-body container mt-2">
+                                        <div class="form-floating">
+                                            <select class="form-select" id="pickUpMethodSelect" aria-label="Floating label select example" name="pickUpMethod">										    
+                                                <option value="pickUpMethod1">宅配</option>
+                                                <option value="pickUpMethod">超商</option>
+                                                <option value="pickUpMethod3">自取</option>
+                                            </select>
+                                            <label for="floatingSelect">取貨方式</label>
+                                        </div>
+                                    </div>
+                                    <!-- 取貨over-->
+
+                                    <div class="card-body container mt-1">
+                                        <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">地址</label>
+                                        <input type="text" class="form-control" id="addressInput" placeholder="縣市鄉鎮" name="address">
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- 付款 -->
+                                    <div class="card-body container mt-2">
+                                        <div class="form-floating">
+                                            <select class="form-select" id="paymentMethodSelect" aria-label="Floating label select example" name="paymentMethod">										    
+                                                <option value="paymentMethod1">信用卡</option>
+                                                <option value="paymentMethod2">匯款</option>
+                                                <option value="paymentMethod3">現金自取</option>
+                                            </select>
+                                            <label for="floatingSelect">付款方式</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- 付款over -->
+                                    <!--body over-->
+                                </div>
+                            </div>
+                            <!--選擇送貨及付款方式 over-->
+
+                            <!--訂單資訊-->
+                            <div class="col-sm-3">
+                                <div class="card h-100">
+                                    <!--header-->
+                                    <div class="card-header mt-1">
+                                        <h5 class="card-title">訂單資訊</h5>
+                                    </div>
+                                    <!--header over-->
+
+                                    <!--body-->
+                                    <div class="card-body">
+                                        <div>
+                                            <div>
+                                                <h6 class="card-total">小計：</h6>
+                                            </div>
+                                            <div class="order-totalPay">
+
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <div>
+                                                <h6 class="card-deliver ">運費：</h6>
+                                            </div>
+                                            <div class="order-deliverFee">
+
+                                            </div>
+                                        </div>
+                                        <div class="mt-auto">
+                                            <button id="checkoutButton" class="btn btn-primary" type="submit">前往結帳</button>
+                                        </div>
+
+                                    </div>
+                                    <!--body over-->
+                                </div>
+                            </div>
+                            <!--訂單資訊 over-->
+                        </div>
+                    </form>
+                    <script src="sendData.js"></script>
+                    <!--下方div over-->
+                </div>
+            </div>
+        </div>
+    </div> <!--設定置中 over-->
+    </div><!--定寬容器over-->
+    <!--body over-->
+    
+    <!--footer-->
+    <!--定寬容器-->
+    <div class="container">
+        <!--設定置中-->
+        <div class="row justify-content-center">
+            <div class="row col-10 bg-grayColor">
+                <footer>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                        <div class="col-md-4" >
+                            <h4>About Us</h4>
+                            
+                        </div>
+                        <div class="col-md-10" >
+                            
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum, consectetur?</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>Follow Us</h4>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="icons" >
+                            <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+                            <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                            <a href="#"><ion-icon name="logo-youtube"></ion-icon></a>
+                            </div>
+                        </div>
+                        <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+                        <div class="col-md-4">
+                            <h4>Contact Us</h4>
+                        </div>
+                        <div class="col-md-10">
+                            <ul class="contact-info">
+                                <li><i class="fas fa-map-marker-alt"></i> 123 Main Street, New York, NY 10001</li>
+                                <li><i class="fas fa-envelope"></i><a href="mailto:ChiaQ_select@gmail.com">ChiaQ_select@gmail.com</a></li>
+                                <li><i class="fas fa-phone"></i> (03) 123-4567</li>
+                            </ul>
+                        </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            
+        </div>
+        <!--設定置中 over-->
+    </div>
+    <!--定寬容器over-->
+    <!--footer over-->
+
+    
+
+    <!--購物車資料-->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="bootstrap-5.0.2-dist/js/popper.min.js" 
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js" 
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+
+
+    <section class="section">
+        <div class="wrapper">
+            <span class="icon-close">
+                <i class='bx bx-x' ></i>
+            </span>
+
+            <div class="logreg-box">
+                <!-- login form -->
+                <div class="form-box login">
+                    <div class="loreg-title">
+                        <h2>會員登入</h2>
+                        <p>請登入您的帳號</p>
+                    </div>
+                         		<form action="./login2" id="myform" method="POST">
+	                                <div class="input-box">
+	                                    <span class="icon"><i class='bx bxs-envelope'></i></span>
+	                                    <input type="email" name="account" id="account" autofocus>
+	                                    <label>Email</label>
+	                                </div>
+	
+	                                <div class="input-box">
+	                                    <span class="icon"><i class='bx bxs-lock-alt'></i></span>
+	                                    <input type="password" name="password" id="password">
+	                                    <label>Password</label>
+	                                </div>
+	                                
+	                                <div class="remember-forgot">
+	                                    <label><input type="checkbox">
+	                                    Remember Me</label>
+	                                    <a href="#">忘記密碼 ?</a>
+	                                </div>
+	
+	                                <button type="submit"
+	                                class="btn">會員登入</button>
+                                 </form>                           
+                                <button type="submit"
+                                class="registerLink">註冊會員</button>
+                        </div>
+                        
+                        <!-- register from -->
+                        <div class="form-box register">
+                            <div class="loreg-title">
+                                <h2>會員註冊</h2>
+                                <p>請提供會員相關資料</p>
+                            </div>
+                             <form id="myform" action="./join" method="POST">
+                                <div class="input-box">
+                                    <span class="icon"><i class='bx bxs-user'></i></span>
+                                    <input type="text" name="name" id="name" pattern="[^/\\\.\?\*\$\+,;\^!@#%]*"
+									title="禁用特殊字元[^.\?*$+,;!@#%]"  required>
+                                    <label>Full Name</label>
+                                </div>
+                                
+                                <div class="input-box">
+                                    <span class="icon"><i class='bx bxs-envelope'></i></span>
+                                  <input type="email" name="account" id="acc" required>
+                                    <label>Email</label>
+                                </div>
+
+                                <div class="input-box">
+                                    <span class="icon"><i class='bx bxs-lock-alt'></i></span>
+                                    <input type="password" name="password" id="pass" required>
+                                    <label>Password</label>
+                                </div>
+                                <div class="input-box">
+                                    <span class="icon"><i class='bx bx-phone'></i></span>
+                                    <input type="text" name="tel" id="tel" pattern="09\d{8}" required>
+                                    <label>Tel</label>
+                                </div>
+                                <div class="input-box">
+                                    <span class="icon"><i class='bx bx-home'></i></span>
+                                    <input type="text" name="address" id="addr" required >
+                                    <label>address</label>
+                                </div>
+                                
+                                <div class="remember-forgot">
+                                    <label><input type="checkbox">
+                                    我接受使用條款及銷售條款</label>
+                                </div>
+
+                                <button type="submit"
+                                class="btn">註冊</button>
+
+                                <div class="logerg-link">
+                                    <p>已經有會員 ? <a href="#"
+                                    class="login-link">Login</a></p>
+                                </div>
+                            </form>
+                		</div>
+
+            </div>
+            <div class="media-options">
+                <a href="#">
+                    <i class='bx bxl-google'></i>
+                    <span>Login with Google</span>
+                </a>
+                <a href="#">
+                    <i class='bx bxl-facebook-circle' ></i>
+                    <span>Login with Facebook</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>

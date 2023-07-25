@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The official Chia.Q online store</title>
-    <link rel="stylesheet" href="style.css" href="">
+    <link rel="stylesheet" href="buy.css" href="">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
     html, body {
@@ -21,6 +21,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 </head>
 <body class="body" style="text-align: center;">
+
     <div class="header">
         <!-- <h2 class="logo"><a href="#">Chia.Q_select</a></h2> -->
         <h1 class="ml5">
@@ -33,7 +34,6 @@
                 <span class="line line2"></span>
                 </a>
             </span>
-            
           </h1>
             <script>anime.timeline({loop: true})
                 .add({
@@ -79,7 +79,7 @@
 
         <div class="menu" >
             <div class="icon">
-                <a href="#" id="shoppingButton" class="shopping"><img src="img/shopping-cart.png" title="購物車"></a>
+                <a href="#" class="shopping"><img src="img/shopping-cart.png" title="購物車"></a>
                 <a href="#" class="Login-popo"><img src="img/user.png" href="#" title="會員資料"></a>
             </div>
             <section class="section">
@@ -87,6 +87,7 @@
                     <span class="icon-close">
                         <i class='bx bx-x' ></i>
                     </span>
+
                     <div class="logreg-box">
                         <!-- login form -->
                         <div class="form-box login">
@@ -170,6 +171,7 @@
                                 </div>
                             </form>
                         </div>
+
                     </div>
                     <div class="media-options">
                         <a href="#">
@@ -210,36 +212,27 @@
         </div>    
     </div>
     <div class="main">
-        <article style="height: 80%;width: 90%;margin: auto;clear: both;">
-            <h2>NEW ARRIVALS</h2>
-            <img class="mySlides" src="img/bag.jpg">
-            <img class="mySlides" src="img/shirt2.jpg">
-            <img class="mySlides" src="img/shirt.jpg">
-                <script>
-                    var slideIndex = 0;
-                    carousel();
-                    
-                    function carousel() {
-                    var i;
-                    var x = document.getElementsByClassName("mySlides");
-                    for (i = 0; i < x.length; i++) {
-                        x[i].style.display = "none";
-                    }
-                    slideIndex++;
-                    if (slideIndex > x.length) {slideIndex = 1}
-                    x[slideIndex-1].style.display = "block";
-                    setTimeout(carousel, 4000); // Change image every 2 seconds
-                    }
-                </script>
-        </article>
-    </div>
-        <div style="display: none;">
-            <div class="addCard">
-                <button type="button" class="buybutton" data-id="0">加入購物車</button>
-            </div>
-            <div class="gobuy">
-                <button type="button"  class="buybutton">直接購買</button>
-            </div>
+    <article style="height: 100%;width: 90%;margin: auto;clear: both;background-color: gray;">
+        <div class="card-list">
+            <img src="img/bag.jpg" alt="bag" class="goods">
+        </div>
+        <div class="card-text">
+            <div class="card-text1">
+                <h1 id="ProductName">Bag</h1>
+                <h6>NT 999</h6><br>
+                <span>數量</span>
+                <br>
+                <br>
+                <input type="number" id="quantity" name="quantity" min="1" value="1">
+	            <div>
+	                <div class="addCard">
+	                    <button type="button" class="buybutton" data-id="0">加入購物車</button>
+	                </div>
+	                <div class="gobuy">
+	                    <button type="button"  class="buybutton">直接購買</button>
+	                </div>
+	            </div>
+        	</div>
         </div>
         <!--購物車-->
         <div>
@@ -255,8 +248,11 @@
             </div>
         </div>
         <script src="app1_new.js"></script>
-    <div>
 
+    </article>
+    </div>
+
+    <div>
     <footer style="height:35%;width: 90%;margin: auto;clear: both;">
         <div class="container">
             <div class="row">
