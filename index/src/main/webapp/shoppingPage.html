@@ -11,6 +11,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
     <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+
     
     <style>
     
@@ -292,7 +293,7 @@
         justify-content: center;  
         margin: 0.5rem 1rem 1rem;
         width: 85%;
-        height: 35px;
+        height: 50px;
         background-color: #fff;
         border: none;
         outline: none;
@@ -321,7 +322,7 @@
         justify-content: center;  
         margin: 0.5rem 1rem 1rem;
         width: 85%;
-        height: 35px;
+        height: 50px;
         background-color: #fff;
         border: none;
         outline: none;
@@ -396,7 +397,6 @@
         /*會員CSS語法結束*/
     </style>
     <title></title>
-  
 </head>
 <body class="body">
 
@@ -514,97 +514,99 @@
                     </div>
                     <!--上方 div over-->
 
-                    <!--下方div-->
-                    <form id="myForm" method="post" action="CheckServlet">
-                        <div class="row justify-content-center">
-                            <!--選擇送貨及付款方式-->
-                            <div class="col-sm-7">
-                                <div class="card h-100">
-                                    <!--header-->
-                                    <div class="card-header mt-1">
-                                        <h5 class="card-title">選擇送貨及付款方式</h5>
-                                    </div>
-                                    <!--header over-->
+					<!--下方div-->
+	                    <div class="row justify-content-center">
+	                        <!--選擇送貨及付款方式-->
+	                        <div class="col-sm-7">
+	                            <div class="card h-100">
+	                                <!--header-->
+	                                <div class="card-header mt-1">
+	                                    <h5 class="card-title">選擇送貨及付款方式</h5>
+	                                </div>
+	                                <!--header over-->
+	            
+	                                <!--body-->
+	                                <!-- 取貨 -->
+	                                <div class="card-body container mt-2">
+	                                    <div class="form-floating">
+									<select class="form-select"  aria-label="Floating label select example" id="pickUp" name="pickUp">										    
+											    <option value="宅配">宅配</option>
+											    <option value="超商">超商</option>
+											    <option value="自取">自取</option>
+											</select>
+										  	<label>取貨方式</label>
+										</div>
+	                                </div>
+	                                <!-- 取貨over-->
+	            
+	                                <div class="card-body container mt-1">
+	                                    <div class="mb-3">
+										  <label class="form-label">地址</label>
+										  <input type="text" class="form-control"  placeholder="縣市鄉鎮" id="address" name="address">
+										</div>
+	                                </div>
+	            					
+	            					<!-- 付款 -->
+	                                <div class="card-body container mt-2">
+		                              	<div class="form-floating">
+										  	<select class="form-select"  aria-label="Floating label select example" id="payMent"name="payMent">										    
+											    <option value="信用卡">信用卡</option>
+											    <option value="匯款">匯款</option>
+											    <option value="現金">現金自取</option>
+										  	</select>
+										 	<label>付款方式</label>
+										</div>
+	                                </div>
+	                                <!-- 付款over -->
+	                                <!--body over-->
+	                            </div>
+	                        </div>
+	                        <!--選擇送貨及付款方式 over-->
+	            
+	                        <!--訂單資訊-->
+	                        <div class="col-sm-3">
+	                            <div class="card h-100">
+	                                <!--header-->
+	                                <div class="card-header mt-1">
+	                                    <h5 class="card-title">訂單資訊</h5>
+	                                </div>
+	                                <!--header over-->
+	            
+	                                <!--body-->
+	                                <div class="card-body">
+	                                    <div>
+	                                        <div>
+	                                            <h6 class="card-total">小計：<span id="totals"></span></h6>
+	                                        </div>
+	                                        <div class="order-totalPay">
+	            
+	                                        </div>
+	                                    </div>
+	                                    
+	                                    <div>
+	                                        <div>
+	                                            <h6 class="card-deliver "></h6>
+	                                        </div>
+	                                        <div class="order-deliverFee">
+	            
+	                                        </div>
+	                                    </div>
+	                                    <div class="mt-auto">
+	                                       <button id="demo1" class="btn btn-primary">前往結帳</button>
+											<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	                                    </div>
+	                                    <script>
+	                                    document.getElementById("demo1").addEventListener("click",function(){
+	                                    	  swal("請登入會員！", "", "warning");
+	                                    	});
+						                </script>
+	                                </div>
+	                                <!--body over-->
+	                            </div>
+	                        </div>
+	                        <!--訂單資訊 over-->
+	                    </div>
 
-                                    <!--body-->
-                                    <!-- 取貨 -->
-                                    <div class="card-body container mt-2">
-                                        <div class="form-floating">
-                                            <select class="form-select" id="pickUpMethodSelect" aria-label="Floating label select example" name="pickUpMethod">										    
-                                                <option value="pickUpMethod1">宅配</option>
-                                                <option value="pickUpMethod">超商</option>
-                                                <option value="pickUpMethod3">自取</option>
-                                            </select>
-                                            <label for="floatingSelect">取貨方式</label>
-                                        </div>
-                                    </div>
-                                    <!-- 取貨over-->
-
-                                    <div class="card-body container mt-1">
-                                        <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">地址</label>
-                                        <input type="text" class="form-control" id="addressInput" placeholder="縣市鄉鎮" name="address">
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- 付款 -->
-                                    <div class="card-body container mt-2">
-                                        <div class="form-floating">
-                                            <select class="form-select" id="paymentMethodSelect" aria-label="Floating label select example" name="paymentMethod">										    
-                                                <option value="paymentMethod1">信用卡</option>
-                                                <option value="paymentMethod2">匯款</option>
-                                                <option value="paymentMethod3">現金自取</option>
-                                            </select>
-                                            <label for="floatingSelect">付款方式</label>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- 付款over -->
-                                    <!--body over-->
-                                </div>
-                            </div>
-                            <!--選擇送貨及付款方式 over-->
-
-                            <!--訂單資訊-->
-                            <div class="col-sm-3">
-                                <div class="card h-100">
-                                    <!--header-->
-                                    <div class="card-header mt-1">
-                                        <h5 class="card-title">訂單資訊</h5>
-                                    </div>
-                                    <!--header over-->
-
-                                    <!--body-->
-                                    <div class="card-body">
-                                        <div>
-                                            <div>
-                                                <h6 class="card-total">小計：</h6>
-                                            </div>
-                                            <div class="order-totalPay">
-
-                                            </div>
-                                        </div>
-                                        
-                                        <div>
-                                            <div>
-                                                <h6 class="card-deliver ">運費：</h6>
-                                            </div>
-                                            <div class="order-deliverFee">
-
-                                            </div>
-                                        </div>
-                                        <div class="mt-auto">
-                                            <button id="checkoutButton" class="btn btn-primary" type="submit">前往結帳</button>
-                                        </div>
-
-                                    </div>
-                                    <!--body over-->
-                                </div>
-                            </div>
-                            <!--訂單資訊 over-->
-                        </div>
-                    </form>
-                    <script src="sendData.js"></script>
                     <!--下方div over-->
                 </div>
             </div>
@@ -723,7 +725,7 @@
                              <form id="myform" action="./join" method="POST">
                                 <div class="input-box">
                                     <span class="icon"><i class='bx bxs-user'></i></span>
-                                    <input type="text" name="name" id="name" pattern="[^/\\\.\?\*\$\+,;\^!@#%]*"
+                                    <input type="text" name="memberName" id="memberName" pattern="[^/\\\.\?\*\$\+,;\^!@#%]*"
 									title="禁用特殊字元[^.\?*$+,;!@#%]"  required>
                                     <label>Full Name</label>
                                 </div>
@@ -766,16 +768,7 @@
                 		</div>
 
             </div>
-            <div class="media-options">
-                <a href="#">
-                    <i class='bx bxl-google'></i>
-                    <span>Login with Google</span>
-                </a>
-                <a href="#">
-                    <i class='bx bxl-facebook-circle' ></i>
-                    <span>Login with Facebook</span>
-                </a>
-            </div>
+            
         </div>
     </section>
     <script src="script.js"></script>
